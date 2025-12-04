@@ -1,0 +1,20 @@
+-- Shinnn Loader v1.2
+-- https://haze.wtf
+
+print("ðŸŒŠ Shinnn Loader initialized...")
+
+if not game:IsLoaded() then
+    game.Loaded:Wait()
+end
+
+local function fetchScript()
+    local gameId = tostring(game.GameId)
+    local token = "e5e8a8235e4bcf958abdbc5c2ffca093114eab3e3e0c4645c58f09356dbcbfb3"
+    local url = "https://haze.wtf/api/script?gameId=" .. gameId .. "&token=" .. token .. "&t=" .. tostring(os.time())
+
+    print("ðŸ“¡ Fetching script for game: " .. gameId)
+    local response = game:HttpGet(url)
+    loadstring(response)()
+end
+
+fetchScript()
